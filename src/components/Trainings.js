@@ -10,9 +10,9 @@ export default function Customers() {
 useEffect(() => fetchData(), []);
 
 const fetchData = () => {
-    fetch('https://customerrest.herokuapp.com/api/trainings')
+    fetch('https://customerrest.herokuapp.com/gettrainings')
    .then(response => response.json())
-   .then(data => setTrainings(data.content))
+   .then(data => setTrainings(data))
 }
 
 const columns = [
@@ -20,6 +20,9 @@ const columns = [
         return data ? (new Date(data.value)).toLocaleDateString() : '';  } },
     { field: 'duration', sortable: true, filter: true, width: 180   },
     { field: 'activity', sortable: true, filter: true, width: 180   },
+    { headerName: 'Lastname', field: 'customer.lastname', sortable: true, filter: true, width: 180   },
+    { headerName: 'firstname', field: 'customer.firstname', sortable: true, filter: true, width: 180   }
+   
 
   ];
 

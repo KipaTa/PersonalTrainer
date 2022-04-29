@@ -21,7 +21,7 @@ const columns = [
     { field: 'duration', sortable: true, filter: true, width: 180   },
     { field: 'activity', sortable: true, filter: true, width: 180   },
     { headerName: 'Lastname', field: 'customer.lastname', sortable: true, filter: true, width: 180   },
-    { headerName: 'firstname', field: 'customer.firstname', sortable: true, filter: true, width: 180   }
+    { headerName: 'Firstname', field: 'customer.firstname', sortable: true, filter: true, width: 180   }
    
 
   ];

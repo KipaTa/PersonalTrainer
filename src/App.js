@@ -19,13 +19,13 @@ function App() {
     <div className="App">
       
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{ alignItems: "center"}}>
           
           <Typography>
             Welcome to personal trainer!
           </Typography>
        
-        </Toolbar>
+        </Toolbar >
         <Tabs value={value} onChange={handleChange}>
                 <Tab value="one" label="Customers"/>
                 <Tab value="two" label="Trainings"/>

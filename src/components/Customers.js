@@ -26,6 +26,9 @@ const columns = [
   ];
 
   return (
+      <div>
+          <h2 style= {{textAlign: 'left', margin: '10px'}}>Customers</h2>
+     
     <div className="ag-theme-material"
         style={{height: '700px', margin: 'auto'}} >
             
@@ -36,7 +39,7 @@ const columns = [
 
     
     </div>
-
+    </div>
    
 )
 

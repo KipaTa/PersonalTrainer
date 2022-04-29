@@ -3,10 +3,11 @@ import { AgGridReact } from 'ag-grid-react';
 import'ag-grid-community/dist/styles/ag-grid.css';
 import'ag-grid-community/dist/styles/ag-theme-material.css';
 import AddCustomer from './AddCustomer';
+import EditCustomer from './EditCustomer';
 
 export default function Customers() {
     const [customers, setCustomers] = useState([]);
-
+    
     
 useEffect(() => fetchData(), []);
 
@@ -28,6 +29,18 @@ const saveCustomer = (customer) => {
     .catch(err => console.error(err))
 }
 
+const updateCustomer = (customer, link) => {
+    fetch(link, {
+       method: 'PUT',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+       body: JSON.stringify(customer) 
+    })
+    .then(res => fetchData())
+    .catch(err => console.error(err))
+ }
+
 const columns = [
     { field: 'firstname', sortable: true, filter: true, width: 180 },
     { field: 'lastname', sortable: true, filter: true, width: 180   },
@@ -35,7 +48,8 @@ const columns = [
     { field: 'postcode', sortable: true, filter: true, width: 180   },
     { field: 'city', sortable: true, filter: true, width: 180   },
     { field: 'email', sortable: true, filter: true, width: 180  },
-    { field: 'phone', sortable: true, filter: true, width: 180  }
+    { field: 'phone', sortable: true, filter: true, width: 180  },
+    { width: 100, cellRenderer:row =><EditCustomer updateCustomer={updateCustomer} customer={row.data} /> }
   ];
 
   return (

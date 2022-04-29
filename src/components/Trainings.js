@@ -46,7 +46,7 @@ const columns = [
 
   return (
       <div>
-    <h2 style= {{textAlign: 'left', margin: '10px'}}>Trainings</h2>
+    <h2 style= {{textAlign: 'center', margin: '10px'}}>Trainings</h2>
     <div className="ag-theme-material"
         style={{height: '700px', margin: 'auto'}} >
             

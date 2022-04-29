@@ -74,7 +74,7 @@ const columns = [
    
     { width: 100, headerName: '', field:'links.0.href', cellRenderer:row=> <Button variant="contained" size="small" color="secondary" onClick={()=> deleteCustomer(row.value)}>Delete</Button>},
     { width: 100, cellRenderer:row =><EditCustomer updateCustomer={updateCustomer} customer={row.data} /> },
-    { width: 200, cellRenderer:row =><AddTraining addTraining={addTraining} customer= {row.data}/> },
+    { width: 150, cellRenderer:row =><AddTraining addTraining={addTraining} customer= {row.data}/> },
     { field: 'firstname', sortable: true, filter: true, width: 180 },
     { field: 'lastname', sortable: true, filter: true, width: 180 },
     { field: 'streetaddress', sortable: true, filter: true, width: 180 },
@@ -86,7 +86,7 @@ const columns = [
 
   return (
       <div>
-          <h2 style= {{textAlign: 'left', margin: '10px'}}>Customers</h2>
+          <h2 style= {{textAlign: 'center', margin: '10px'}}>Customers</h2>
                 <AddCustomer saveCustomer={saveCustomer}/>
     <div className="ag-theme-material"
         style={{height: '600px', margin: 'auto'}} >

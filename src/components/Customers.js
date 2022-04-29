@@ -6,6 +6,7 @@ import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar';
 import AddCustomer from './AddCustomer';
 import EditCustomer from './EditCustomer';
+import AddTraining from './AddTraining';
 
 export default function Customers() {
     const [customers, setCustomers] = useState([]);
@@ -48,25 +49,39 @@ const updateCustomer = (customer, link) => {
     if (window.confirm('Are you sure?')) {
       fetch(link, {method: 'DELETE'})
       .then (res => fetchData() )
-      .catch(err => console.error (err))
+      .catch(err => console.error(err))
       setOpen(true);
     }
   }
+
+  function addTraining(training){
+    fetch('https://customerrest.herokuapp.com/api/trainings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(training)
+    })
+        .then(res => fetchData())
+        .catch(err => console.error(err))
+}
 
   const handleClose = () => {
     setOpen(false);
    };
 
 const columns = [
+   
+    { width: 100, headerName: '', field:'links.0.href', cellRenderer:row=> <Button variant="contained" size="small" color="secondary" onClick={()=> deleteCustomer(row.value)}>Delete</Button>},
+    { width: 100, cellRenderer:row =><EditCustomer updateCustomer={updateCustomer} customer={row.data} /> },
+    { width: 200, cellRenderer:row =><AddTraining addTraining={addTraining} customer= {row.data}/> },
     { field: 'firstname', sortable: true, filter: true, width: 180 },
-    { field: 'lastname', sortable: true, filter: true, width: 180   },
-    { field: 'streetaddress', sortable: true, filter: true, width: 180   },
-    { field: 'postcode', sortable: true, filter: true, width: 180   },
+    { field: 'lastname', sortable: true, filter: true, width: 180 },
+    { field: 'streetaddress', sortable: true, filter: true, width: 180 },
+    { field: 'postcode', sortable: true, filter: true, width: 180 },
     { field: 'city', sortable: true, filter: true, width: 180   },
     { field: 'email', sortable: true, filter: true, width: 180  },
-    { field: 'phone', sortable: true, filter: true, width: 180  },
-    { width: 100, cellRenderer:row =><EditCustomer updateCustomer={updateCustomer} customer={row.data} /> },
-    { width: 100, headerName: '', field:'links.0.href', cellRenderer:row=> <Button variant="contained" size="small" color="secondary" onClick={()=> deleteCustomer(row.value)}>Delete</Button>}
+    { field: 'phone', sortable: true, filter: true, width: 180  }  
   ];
 
   return (
@@ -74,7 +89,7 @@ const columns = [
           <h2 style= {{textAlign: 'left', margin: '10px'}}>Customers</h2>
                 <AddCustomer saveCustomer={saveCustomer}/>
     <div className="ag-theme-material"
-        style={{height: '700px', margin: 'auto'}} >
+        style={{height: '600px', margin: 'auto'}} >
             
         <AgGridReact 
             columnDefs={columns} 

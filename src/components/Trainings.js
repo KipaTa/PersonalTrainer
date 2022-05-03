@@ -4,6 +4,7 @@ import'ag-grid-community/dist/styles/ag-grid.css';
 import'ag-grid-community/dist/styles/ag-theme-material.css';
 import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar';
+import { CSVLink } from "react-csv";
 
 export default function Customers() {
     const [trainings, setTrainings] = useState([]);
@@ -49,7 +50,7 @@ const columns = [
     <h2 style= {{textAlign: 'center', margin: '10px'}}>Trainings</h2>
     <div className="ag-theme-material"
         style={{height: '700px', margin: 'auto'}} >
-            
+        <CSVLink data={trainings} >Download as CSV</CSVLink>
         <AgGridReact 
             columnDefs={columns} 
             rowData={trainings}>

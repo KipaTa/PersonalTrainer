@@ -7,6 +7,7 @@ import Snackbar from '@mui/material/Snackbar';
 import AddCustomer from './AddCustomer';
 import EditCustomer from './EditCustomer';
 import AddTraining from './AddTraining';
+import { CSVLink } from "react-csv";
 
 export default function Customers() {
     const [customers, setCustomers] = useState([]);
@@ -86,11 +87,13 @@ const columns = [
 
   return (
       <div>
+        
           <h2 style= {{textAlign: 'center', margin: '10px'}}>Customers</h2>
                 <AddCustomer saveCustomer={saveCustomer}/>
+                
     <div className="ag-theme-material"
         style={{height: '600px', margin: 'auto'}} >
-            
+        <CSVLink data={customers} >Download as CSV</CSVLink>
         <AgGridReact 
             columnDefs={columns} 
             rowData={customers}>

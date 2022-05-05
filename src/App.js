@@ -3,6 +3,7 @@ import './App.css';
 import Customers from './components/Customers';
 import Trainings from './components/Trainings';
 import Calendar from './components/Calendar';
+import Charts from './components/Charts';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -31,12 +32,14 @@ function App() {
                 <Tab value="one" label="Customers"/>
                 <Tab value="two" label="Trainings"/>
                 <Tab value="three" label="Calendar"/>
+                <Tab value="four" label="Charts"/>
             </Tabs>
 
       </AppBar>
       {value ==='one' && <div> <Customers/></div>}
         {value ==='two' && <div> <Trainings/></div>}
           {value ==='three' && <div> <Calendar/></div>}
+            {value ==='four' && <div> <Charts/></div>}
      
 </div>
   );

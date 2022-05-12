@@ -19,6 +19,10 @@ const fetchData = () => {
 
 
     return (
+      <div>
+        <div>
+             <h2>Training calendar</h2>   
+        </div>
       <FullCalendar
         plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
@@ -37,6 +41,7 @@ const fetchData = () => {
             return calendar;
         })}
       />
+      </div>
     )
   
 }
